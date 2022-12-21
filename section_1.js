@@ -24,3 +24,27 @@ ranking.indexOf("0"); //-1
 // 4. includes() : 특정 배열에 주어진 데이터가 포함되어있는지 확인하는 메소드
 ranking.includes("데이터1"); // true
 ranking.includes("0"); // false
+
+// 객체 object : 객체는 키값을 통해 해당 데이터가 무엇에 대한 데이터인지 명시
+let userData = { name: "Jason", age: 25, gender: "Male" };
+
+// 객체접근
+// 1. Dot notation
+userData.name; // "Jason"
+// 2. Bracket notation
+userData["name"]; // "Jason" <- stirng으로 입력을 안하면 변수를 찾음
+
+let age = "gender";
+userData[age]; // "Male" 출력 => userData[age] === userData["gender"]
+
+// 객체의 메소드 method
+// 1. Object.keys() : 주어진 객채의 key만을 가져와 배열에 담아주는 메서드
+let userDateKeys = Object.keys(userData); // ['name', 'age', 'gender']
+userDateKeys.includes("email"); // false
+
+// 2. Object.values() : 주어진 객채의 value만을 가져와 배열에 담아주는 메서드
+let userDataValues = Object.values(userData); // ['Jason', 25, 'Male']
+
+// 3. 새로운 key : value 담기
+userData.favoriteFood = ["밥", "파스타", "치킨"];
+/* let userData = { name: "Jason", age: 25, gender: "Male", favoriteFood:  ["밥", "파스타", "치킨" };*/
