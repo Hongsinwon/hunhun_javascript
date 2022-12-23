@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D-day Counter</title>
+  </head>
+  <body>
+    <!-- <button class="button" onclick="onClick()">확인</button> -->
+
+    <input id="target-year-input" type="text" />
+    <input id="target-month-input" type="text" />
+    <input id="target-date-input" type="text" />
+
+    <button onclick="dateFormMaker()">확인</button>
+  </body>
+  <script>
+    // const onClick = () => console.log("함수 실행");
+    // onClick(); // 호출
+
+    // document.querySelector(".button").addEventListener("click", () => {
+    //   console.log("실행!");
+    // });
+
+    const dateFormMaker = () => {
+      const inputYear = document.querySelector("#target-year-input").value;
+      const inputMonth = document.querySelector("#target-month-input").value;
+      const inputDate = document.querySelector("#target-date-input").value;
+      const dataFormat = inputYear + "-" + inputMonth + "-" + inputDate;
+
+      return dataFormat;
+    };
+
+    const counterData = () => {
+      const targetDateInput = counterData();
+      const todayDate = new Date();
+      const targetData = new Date(targetDateInput).setHours(0, 0, 0, 0);
+      const remaining = (targetData - todayDate) / 1000;
+      const remainingDate = Math.floor(remaining / 3600 / 24);
+      const remainingHours = Math.floor(remaining / 3600) % 24;
+      const remainingMin = Math.floor(remaining / 60) % 60;
+      const remainingSec = Math.floor(remaining) % 60;
+
+      const textCalss = document.getElementsByClassName("text");
+      const text = (textCalss.textContent = ` ${remainingDate}일
+        ${remainingHours} : ${remainingMin} : ${remainingSec}`);
+
+      return text;
+    };
+  </script>
+</html>
