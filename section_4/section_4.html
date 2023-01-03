@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D-day Counter</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #d-day-container {
+        display: flex;
+      }
+
+      .d-day-child-container span {
+        margin-right: 0.5rem;
+      }
+
+      #target-selector {
+        margin: 1rem 0;
+      }
+    </style>
+  </head>
+  <body> 
+    <h1>D-Day</h1>
+    <div id="d-day-container">
+      <div class="d-day-child-container">
+        <span id="days">0</span>
+        <span>일</span>
+      </div>
+      <div class="d-day-child-container">
+        <span id="hours">0</span><span>시간</span>
+      </div>
+      <div class="d-day-child-container">
+        <span id="min">0</span><span>분</span>
+      </div>
+      <div class="d-day-child-container">
+        <span id="sec">0</span><span>초</span>
+      </div>
+    </div>
+
+    <div id="d-day-massage"></div>
+
+    <div id="target-selector">
+      <input id="target-year-input" type="text" size="5" /> -
+      <input id="target-month-input" type="text" size="5" /> -
+      <input id="target-date-input" type="text" size="5" />
+    </div>
+    <button onclick="counterData()" id="start-btn">카운트 다운 시작</button>
+  </body>
+  <script src="./section_4.js"></script>
+</html>
