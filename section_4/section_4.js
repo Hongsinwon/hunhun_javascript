@@ -23,17 +23,17 @@ const counterData = () => {
   const remainingMin = Math.floor(remaining / 60) % 60;
   const remainingSec = Math.floor(remaining) % 60;
 
+  const days = document.querySelector("#days");
+  const hours = document.querySelector("#hours");
+  const min = document.querySelector("#min");
+  const sec = document.querySelector("#sec");
+
   const remainingObj = {
     remainingDate: Math.floor(remaining / 3600 / 24),
     remainingHours: Math.floor(remaining / 3600) % 24,
     remainingMin: Math.floor(remaining / 60) % 60,
     remainingSec: Math.floor(remaining) % 60,
   };
-
-  const days = document.querySelector("#days");
-  const hours = document.querySelector("#hours");
-  const min = document.querySelector("#min");
-  const sec = document.querySelector("#sec");
 
   const documentObj = {
     days: document.querySelector("#days"),
@@ -44,15 +44,45 @@ const counterData = () => {
   // 만약 remaining이 0이라면 타이머가 종료 되었습니다 출력
   if (remaining < 0) {
     messageContainer.innerHTML = "<h3>타이머가 종료 되었습니다.</h3>";
+    setClearInterval();
+    return;
   } else if (isNaN(remaining)) {
     //만약 잘못된 날짜가 들어왔다면, 유효한 시간대가 아닙니다.
     messageContainer.innerHTML = "<h3>유효한 시간대가 아닙니다.</h3>";
+    setClearInterval();
+    return;
   } else {
+    const timeKeys = Object.keys(remainingObj);
+    const docKeys = Object.keys(documentObj);
+
     container.style.display = "flex";
     messageContainer.style.display = "none";
-    documentObj["days"].textContent = remainingDate;
-    documentObj["hours"].textContent = remainingHours;
-    min.textContent = remainingObj.remainingMin;
-    sec.textContent = remainingObj.remainingSec;
+
+    for (let i = 0; timeKeys.length > i; i++) {
+      documentObj[docKeys[i]].textContent = remainingObj[timeKeys[i]];
+      // 같은내용
+      // documentObj["days"].textContent = remainingDate;
+      // documentObj["hours"].textContent = remainingHours;
+      // min.textContent = remainingObj.remainingMin;
+      // sec.textContent = remainingObj.remainingSec;
+    }
+  }
+};
+const intervalIdArr = [];
+const starter = () => {
+  counterData();
+  const intervalId = setInterval(counterData, 1000);
+  //console.log(intervalId);
+  intervalIdArr.push(intervalId);
+  console.log(intervalIdArr);
+};
+
+const setClearInterval = () => {
+  container.style.display = "none";
+  messageContainer.style.display = "block";
+  messageContainer.innerHTML = "<h3>D-day를 입력해주세요.</h3>";
+
+  for (let i = 0; i < intervalIdArr.length; i++) {
+    clearInterval(intervalIdArr[i]);
   }
 };
