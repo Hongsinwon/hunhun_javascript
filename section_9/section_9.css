@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #999;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.todo-container {
+  max-width: 100vw;
+}
+
+.todo-container ul {
+  list-style: none;
+}
+
+.todo-container ul li {
+  display: flex;
+  align-items: center;
+}
+
+.todo-container ul li button {
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+}
+
+.complete {
+  color: red;
+  font-style: italic;
+}
